@@ -82,6 +82,33 @@ class TodoController extends Controller
         return redirect('/dashboard')->with('success', 'TODO completado com sucesso');
     }
 
+    public function edit(Todo $todo) {
+        $user = auth()->user();
+
+        if ($todo->user_id !== $user->id) {
+            return response('', 404);
+        }
+
+        return view('edit', compact('todo'));
+    }
+
+    public function update($todo, Request $request) {
+        $user = auth()->user();
+
+        $todo = Todo::find($todo);
+
+        if ($todo->user_id !== $user->id) {
+            return response('', 403);
+        }
+
+        $todo->color = $request->color;
+        $todo->title = $request->title;
+
+        $todo->save();
+
+        return redirect('/dashboard');
+    }
+
     /**
      * Remove the specified resource from storage.
      *
