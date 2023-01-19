@@ -88,10 +88,14 @@ class TodoController extends Controller
      * @param  \App\Models\Todo  $todo
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Todo $todo)
+    public function destroy($todo)
     {
         try {
             // Verificar se TODO é do usuário
+            $user = auth()->user();
+
+            $todo = Todo::find($todo);
+
             if ($todo->user_id !== $user->id) {
                 return response('', 403);
             }
