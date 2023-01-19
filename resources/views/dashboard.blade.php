@@ -9,7 +9,7 @@
     <div class="min-vh-100 d-flex justify-content-center align-items-center">
         <div class="shadow-lg p-3 bg-dark text-white rounded p-5" style="width: 850px; min-height: 300px;">
             <h1>Tarefas</h1>
-            <small class="text-info">{{ $todos->count() }} ativas</small>
+            <small class="text-info">{{ $todos->is_complete->count() }} ativas</small>
             <form action="/todos" method="post" class="mt-3">
                 @csrf
                 <div class="input-group">
