@@ -27,7 +27,7 @@
                 @foreach ($todos as $todo)
                     <li class="list-group-item d-flex justify-content-between align-items-center bg-transparent text-white">
                         <div class="d-flex align-items-center">
-                            <span class="badge rounded-pill me-2" style="background: {{ $todo->color ?? '#FFFFFF' }}">&nbsp;</span>
+                            <span class="badge rounded-pill me-2" style="background-color: {{ $todo->color ?? '#FFFFFF' }}">&nbsp;</span>
                             @if ($todo->is_complete)
                                 <del>{{ $todo->title }}</del>
                             @else
